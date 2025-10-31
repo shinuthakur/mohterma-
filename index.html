@@ -235,10 +235,15 @@
   const heartContainer = document.getElementById('heartContainer');
   const floatingText = document.getElementById('floatingText');
   openHeartBtn.addEventListener('click', () => {
-    messageCard.classList.add('show');
-    openHeartBtn.style.display = 'none';
-    heartContainer.focus();
-  });
+  messageCard.classList.add('show');
+  openHeartBtn.style.display = 'none';
+  heartContainer.focus();
+  // Start the music if paused (browser should allow after interaction)
+  if (bgMusic.paused) {
+      bgMusic.muted = false;
+      bgMusic.play();
+  }
+});
   heartContainer.addEventListener('click', () => {
     floatingText.textContent = 'I love you ❤️';
     floatingText.style.opacity = '1';
@@ -262,3 +267,4 @@
 </script>
 </body>
 </html>
+
